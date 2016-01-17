@@ -1,0 +1,79 @@
+@mixin background-image(){
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+.panel-cover {
+    display: inline-table !important;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+#landing-section, #microsoft-panel, #google-panel, #rockwell-panel, #workiva-panel, #iowa-girls-code-camp-panel, #internhacks-panel, #googlejump-panel, #square-code-camp-panel{
+  @include background-image();
+}
+
+#landing-section {
+  height: 100vh;
+  background-position: right top !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  background-blend-mode: luminosity !important; 
+}
+
+#microsoft-panel {
+  background: url(../img/microsoft-me.jpg);
+}
+
+#google-panel {
+  background: url(../img/google-me.jpg);
+}
+
+#rockwell-panel {
+  background: url(../img/rockwell-me.jpg);
+}
+
+#workiva-panel {
+  background: url(../img/workiva-me.png);
+}
+
+#iowa-girls-code-camp-panel {
+    background: url(../img/iowagirlscodecamp.jpg);
+}
+
+#square-code-camp-panel {
+    background: url(../img/squarecodecamp.jpg);
+}
+
+#internhacks-panel {
+      background: url(../img/internhacks.jpg);
+}
+
+#googlejump-panel {
+      background: url(../img/googlejump.jpg);
+}
+
+  @media screen and (min-width: 641px) {
+    #landing-section {
+      background: url(../img/bg-large.jpg); 
+    } 
+  }
+  
+  @media screen and (max-width: 640px) and (min-width: 400px) {
+    #landing-section {
+      background: url(../img/bg-medium.jpg); 
+    } 
+  }
+ 
+  @media screen and (max-width: 399px) {
+    #landing-section {
+      background: url(../img/bg-small.jpg);
+    }
+} 
