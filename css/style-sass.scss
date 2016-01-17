@@ -10,6 +10,11 @@
   background-repeat: no-repeat !important;
 }
 
+@mixin vertical-align() {
+    position: relative;
+    top: 50%;
+}
+
 .panel-cover {
     display: inline-table !important;
     height: 100%;
@@ -25,7 +30,38 @@
   height: 100vh;
   background-position: right top !important;
   background-color: rgba(0, 0, 0, 0.2) !important;
-  background-blend-mode: luminosity !important; 
+  background-blend-mode: luminosity !important;   
+
+  #name {
+    font-size: 15rem;
+    color: white;
+    transform: translateY(-95%);
+  }
+
+  #name, #typing-wrapper, i {
+    @include vertical-align();
+  }
+
+  #typing-wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transform: translateY(-200%);
+
+    #siteLogo {
+      text-align: center;
+      font-size: 2.5em;
+    }
+  }
+
+  #arrow-wrapper{
+    color: white;
+    text-align: center;
+    @include vertical-align();
+    transform: translateY(-200%);
+  }
+
 }
 
 #microsoft-panel {
@@ -62,18 +98,18 @@
 
   @media screen and (min-width: 641px) {
     #landing-section {
-      background: url(../img/bg-large.jpg); 
+      
     } 
   }
   
   @media screen and (max-width: 640px) and (min-width: 400px) {
     #landing-section {
-      background: url(../img/bg-medium.jpg); 
+      
     } 
   }
  
   @media screen and (max-width: 399px) {
     #landing-section {
-      background: url(../img/bg-small.jpg);
+     
     }
 } 
