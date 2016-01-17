@@ -1,3 +1,12 @@
+$theme-dark-purple: #1c1726;
+$theme-light-purple: #7a78ae;
+
+@mixin vertical-align() {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 @mixin background-image(){
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
@@ -8,11 +17,6 @@
   -o-background-size: cover;
   background-size: cover !important;
   background-repeat: no-repeat !important;
-}
-
-@mixin vertical-align() {
-    position: relative;
-    top: 50%;
 }
 
 .panel-cover {
@@ -32,14 +36,18 @@
   background-color: rgba(0, 0, 0, 0.2) !important;
   background-blend-mode: luminosity !important;   
 
+  background-size: 200% 100% !important;
+  animation: move 5s ease infinite;
+  transform: translate3d(0, 0, 0);
+  background: linear-gradient(45deg, $theme-dark-purple 10%, $theme-light-purple 90%);
+
+  #landing-content-wrapper {
+    @include vertical-align();
+  }
+
   #name {
     font-size: 15rem;
     color: white;
-    transform: translateY(-95%);
-  }
-
-  #name, #typing-wrapper, i {
-    @include vertical-align();
   }
 
   #typing-wrapper {
@@ -47,7 +55,7 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    transform: translateY(-200%);
+    margin-top: 10%;
 
     #siteLogo {
       text-align: center;
@@ -55,11 +63,14 @@
     }
   }
 
-  #arrow-wrapper{
-    color: white;
-    text-align: center;
-    @include vertical-align();
-    transform: translateY(-200%);
+  #down-arrow {
+    display: block;
+    position: absolute;
+    color: white!important;
+    margin-left: 48%;
+    margin-top: 10%;
+    font-size: 400%;
+    bottom: 10%;  
   }
 
 }
@@ -96,20 +107,67 @@
       background: url(../img/googlejump.jpg);
 }
 
-  @media screen and (min-width: 641px) {
+@media screen and (min-width: 641px) {
     #landing-section {
       
     } 
   }
   
   @media screen and (max-width: 640px) and (min-width: 400px) {
-    #landing-section {
-      
-    } 
+      #name {
+        font-size: 700% !important;
+      }
+
+      h1 {
+        font-size: 50%;
+      }
+    
   }
  
   @media screen and (max-width: 399px) {
     #landing-section {
-     
+
+    #landing-content-wrapper {
+      top: 40%;
+    }
+
+    #typing-wrapper{
+      margin-top: 30%;
+    }
+
+     #name {
+        font-size: 450% !important;
+      }
+
+      h1 {
+        font-size: 35%;
+      }
     }
 } 
+
+/* Animations */
+@keyframes arrive {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 500px, 0);
+    }
+    
+    100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes move {
+    0% {
+        background-position: 0 0
+    }
+
+    50% {
+        background-position: 100% 0
+    }
+
+    100% {
+        background-position: 0 0
+    }
+}
