@@ -5,6 +5,9 @@ jQuery(document).ready(function($){
 	var foldingPanel = $('.cd-folding-panel');
 	var mainContent = $('.cd-main');
 
+	var emojisArray = [];
+	var selectedEmojiIndex = 0;
+
 	init();
 
 	function setGallery(selectedGalleryjQueryObj) {
@@ -83,6 +86,28 @@ jQuery(document).ready(function($){
 		return window.getComputedStyle(document.querySelector('.cd-main'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
 	}
 
+	function setFocusHandlers() {
+		$( '.emoji').focusin(function() {
+			 $(this).toggleClass("animated pulse");
+		});	
+		$( '.emoji').focusout(function() {
+			 $(this).removeClass("animated pulse");
+		});	
+		$('#landing-section > div.row > div:nth-child(2) > img').focus();
+	}
+
+	function focusEmoji(){
+		if (selectedEmojiIndex < 0){
+			selectedEmojiIndex = 0;
+		}
+
+		if (selectedEmojiIndex >= emojisArray.length) {
+			selectedEmojiIndex = emojisArray.length-1;
+		}
+
+		var emoji = emojisArray[selectedEmojiIndex];
+		emoji.focus();
+	}
 
 	function init() {
 		$('.cd-gallery').each(function() {
@@ -93,10 +118,44 @@ jQuery(document).ready(function($){
 			});
 		});
 
+		var index = 0;
+		$( '.emoji').each(function(){
+			emojisArray[index] = $(this);
+			index++;
+		});
+		selectedEmojiIndex = 0;
+
+
 		/* close folding content */
 		foldingPanel.on('click', '.cd-close', function(event){
 			event.preventDefault();
 			toggleContent('', false);
 		});
+
+		setFocusHandlers();
 	}
+
+	$(document).keydown(function(e){
+	    if (e.keyCode == 37) { 
+	       console.log( "left pressed " );
+	       selectedEmojiIndex--;
+	       focusEmoji();
+	       return false;
+	    }
+	    if (e.keyCode == 38) { 
+	       console.log( "up pressed " );
+	       return false;
+	    }
+	    if (e.keyCode == 39) { 
+	       console.log( "right pressed " );
+	       selectedEmojiIndex++;
+	       focusEmoji();
+	       return false;
+	    }
+	    if (e.keyCode == 40) { 
+	       console.log( "down pressed " );
+	       return false;
+	    }
+	});
+
 });

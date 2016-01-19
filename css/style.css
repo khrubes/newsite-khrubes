@@ -4,6 +4,32 @@
   width: 100%;
   background-color: rgba(0, 0, 0, 0.4); }
 
+img.emoji {
+  max-height: 150px; }
+
+img.emoji:focus {
+  outline: none !important; }
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+@keyframes pulse {
+  from {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); }
+  50% {
+    -webkit-transform: scale3d(1.05, 1.05, 1.05);
+    transform: scale3d(1.05, 1.05, 1.05); }
+  to {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1); } }
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse; }
+
 #landing-section, #microsoft-panel, #google-panel, #rockwell-panel, #workiva-panel, #iowa-girls-code-camp-panel, #internhacks-panel, #googlejump-panel, #square-code-camp-panel {
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
@@ -20,34 +46,8 @@
   background-position: right top !important;
   background-color: rgba(0, 0, 0, 0.2) !important;
   background-blend-mode: luminosity !important;
-  background-size: 200% 100% !important;
-  animation: move 5s ease infinite;
-  transform: translate3d(0, 0, 0);
-  background: linear-gradient(45deg, #1c1726 10%, #7a78ae 90%); }
-  #landing-section #landing-content-wrapper {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); }
-  #landing-section #name {
-    font-size: 15rem;
-    color: white; }
-  #landing-section #typing-wrapper {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    margin-top: 10%; }
-    #landing-section #typing-wrapper #siteLogo {
-      text-align: center;
-      font-size: 2.5em; }
-  #landing-section #down-arrow {
-    display: block;
-    position: absolute;
-    color: white !important;
-    margin-left: 48%;
-    margin-top: 10%;
-    font-size: 400%;
-    bottom: 10%; }
+  color: white;
+  text-align: center; }
 
 #microsoft-panel {
   background: url(../img/microsoft-me.jpg); }
@@ -73,35 +73,17 @@
 #googlejump-panel {
   background: url(../img/googlejump.jpg); }
 
+@media screen and (min-width: 900px) {
+  #name {
+    font-size: 1200%; } }
+@media screen and (max-width: 899px) and (min-width: 641px) {
+  #name {
+    font-size: 900%; } }
 @media screen and (max-width: 640px) and (min-width: 400px) {
   #name {
-    font-size: 700% !important; }
-
-  h1 {
-    font-size: 50%; } }
+    font-size: 600%; } }
 @media screen and (max-width: 399px) {
-  #landing-section #landing-content-wrapper {
-    top: 40%; }
-  #landing-section #typing-wrapper {
-    margin-top: 30%; }
-  #landing-section #name {
-    font-size: 450% !important; }
-  #landing-section h1 {
-    font-size: 35%; } }
-/* Animations */
-@keyframes arrive {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 500px, 0); }
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0); } }
-@keyframes move {
-  0% {
-    background-position: 0 0; }
-  50% {
-    background-position: 100% 0; }
-  100% {
-    background-position: 0 0; } }
+  #name {
+    font-size: 450%; } }
 
 /*# sourceMappingURL=style.css.map */
